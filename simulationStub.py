@@ -7,7 +7,18 @@ import json
 
 def storeData(updatedData):
   updatedData.to_csv("./static/data.csv", index=False)  
-  
+
+def getVuln(i):
+    value = random.random()
+    print value
+    print i
+    
+    customCompromised = []
+    for _ in range(0,random.choice(range(4))):
+      customCompromised.append(random.choice([1,2,3,4,5,6,7,8,9]))
+      
+    return {"vuln": value, "compromised": customCompromised}
+    
 def start(maxTick):
   
   # Add stub api for input file pass to simulator
@@ -46,21 +57,18 @@ def start(maxTick):
           if (isPause == False):
             break
         
-    
-    value = random.random()
-    print value
-    print i
-    
-    customCompromised = []
-    for _ in range(0,random.choice(range(4))):
-      customCompromised.append(random.choice([1,2,3,4,5,6,7,8,9]))
-    
-    a +=  datetime.timedelta(seconds = 1)
-    data.append({"date": a.strftime('%d-%b-%y %H:%M:%S'),
-                 "close": "%s"%float(value),
-                 "compromised": customCompromised})
+        
     time.sleep(1)
+    tickData = getVuln(i)
+    
+    a += datetime.timedelta(seconds = 1)
+    data.append({"date": a.strftime('%d-%b-%y %H:%M:%S'),
+                 "close": "%s"%float(tickData["vuln"]),
+                 "compromised": tickData["compromised"]})
     storeData(pd.DataFrame(data, columns = customColumns) )
+    
+    
+    
     
     
     # toggle to done state

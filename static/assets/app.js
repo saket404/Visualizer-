@@ -1,4 +1,3 @@
-
 var app = angular.module("dashboardApp", ["ngRoute", "ngFileUpload"]);
 app.config(["$routeProvider", function($routeProvider) {
     $routeProvider
@@ -559,6 +558,8 @@ angular.module('dashboardApp')
 $scope.uploadFiles = function(file) {
   
   $scope.errorMsg = ""
+
+  
   if (file.name.split(".")[1] != "json"){
     $scope.errorMsg = "Error: Wrong file. Please select a .json file."
     return
