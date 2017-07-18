@@ -58,7 +58,7 @@
             "id": "I",
             "label": "Internet",
             "properties": {
-                "type": "machine",
+                "type": "machine"
             }
         }
     ],
