@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html ng-app="dashboardApp">
+  <head>
+     <meta charset="UTF-8">
+     <link rel='stylesheet' href='./assets/bootstrap.css'>
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <title> SecureInt Simulator </title>
+  </head>
+  
+  
+  <style>
+    
+ body {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-weight: 300;
+    background-color: lightgrey;
+}    
+
+
+.white-color {
+        color: white;
+}
+.upload-tab {
+        background-color: #6666b2;
+        
+}
+.network-tab {
+        background-color: #4c4ca6;
+        
+}
+.simulation-tab {
+        background-color: #323299;
+        
+}
+    
+.graph-tab {
+        background-color: lightgrey;
+}  
+
+.action-tab {
+        background-color: lightgrey;
+}        
+  
+
+.links line {
+  stroke: black;
+  stroke-opacity: 0.6;
+  stroke-width: 3;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+.mainDiv {
+   margin-top: 0px;
+  }
+
+.top-margin{
+  margin-top: 10px;
+}
+.big-top-margin{
+  margin-top: 20px;
+}    
+    
+.bottom-margin{
+  margin-bottom: 10px;
+}
+    
+.card    
+ {
+    border-style: solid;
+    border-width: 2px;
+}    
+    
+</style>
+  
+<body ng-controller="AppController">
+
+<div id= "mainDiv" >
+
+
+
+
+<div class="w3-top">
+  <div class="w3-bar w3-grey w3-padding w3-card-2">
+    <b class="w3-bar-item w3-button">SecureInt Simulator</b>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <li role="presentation" ng-click="triggerHome()" class="w3-bar-item w3-button"><b>Home</b></li>
+      <li role="presentation" ng-click="triggerAbout()" class="w3-bar-item w3-button" ><b>About</a></li>
+    </div>
+  </div>
+</div>
+<hr>
+
+  
+  <div class="container-fluid subDiv" id = "subDiv" ng-show="isHome">
+  <hr>
+  <div id="home-tab" class="row ">
+      <div class="col-lg-4 col-xs-4 upload-tab text-center">
+               <a href="#upload"  class="row white-color" > <b> Upload </b></a>
+      </div>
+      <div class="col-lg-4 col-xs-4 network-tab text-center">
+        <a href="#network"  class="row white-color" > <b> Network </b></a>
+      </div>
+      <div class="col-lg-4 col-xs-4 simulation-tab text-center">
+          <a href="#simulation"  class="row white-color" > <b> Simulation </b></a>
+      </div>
+  </div>
+   
+
+  
+  <div class="top-margin">  
+   <div  class="ng-scope big-top-margin" ng-view></div>
+  </div>
+
+   
+</div>
+   
+<div class="container-fluid" ng-show="isAbout">  
+<hr> 
+<div class="card" >
+
+<h2> About</h2>
+The final scope is to design an interface such that a user can visualize the network, the users and the interactions. The user should be able to tweak parameters like vulnerabilities for the hosts and connections between users. Furthermore, the user should be able to "play" the simulator and view metrics like the vulnerability for the overall system. The frontend should be designed in such a way that it is easy to plug in any simulator (API for backend in Python).
+Divide into 3 panels:
+
+
+Request input file only JSON format. When the user submit file you can store it in a folder name “upload”. The file will then be used by the network visualizer panel and the simulator panel.
+Second panel is the network visualizer where users click create and a network graph emerges where there are two type of nodes the “machine” and “user” nodes and their connections. User can choose to see only user nodes and its links or machine links only or both (you can choose different color). The properties should be shown as a label for each of the nodes and their links. Users should be able to add new nodes and edit old nodes properties and names (use input file and edit input file?).
+The third panel is the Simulator panel. When the user click on simulate with the input of time the plugged in simulator would use the input file as its input and return the compromised entities number. The panel should show a live graph of (compromised being the y axis and simulation time on the x axis). User can stop, pause and play the simulation.
+</div>      
+</div>
+
+</div>        
+    
+    
+    
+    
+</body>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src='./assets/angular.min.js'></script>
+<script src='./assets/angular-route.js'></script>
+<script src='./assets/ng-file-upload.min.js'></script>
+<script src='./assets/app.js'></script>  
+
+</html>

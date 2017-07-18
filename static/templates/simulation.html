@@ -1,17 +1,49 @@
-<div ng-controller="SimulationController">
-   <div class="row">
-    <div class="col-lg-2 col-xs-2 action-tab">
-        <button type="button" ng-click="start()" class="btn btn-primary btn-block"> Play </button>
+<div class="container-fluid" ng-controller="SimulationController">
+   <div class="row ">
+   
+    <div class="col-lg-2 col-xs-2 action-tab  container-fluid">
+       <div class="container-fluid card">
+        <button type="button" ng-click="start()" class="btn btn-primary btn-block  top-margin"> Play </button>
         <button type="button" ng-click="stop()" class="btn btn-primary btn-block"> Stop </button>
+        <div class="form-group">
+      <div class="checkbox">
+      <label><input type="checkbox" ng-model="isPause"  ng-change="triggerPause()"> Pause </label>
+      </div>  
+      <label for="usr">Iterations:</label>
+      <input type="text" class="form-control" ng-model="maxTick">
+    </div> 
     </div>
- 
- 
-
-<div>
-    <div class="col-lg-10 col-xs-10 graph-tab">
-      <svg id = "simulation-viz" width="960" height="600"></svg>
     </div>
     
-</div>   
+ 
+
+
+    <div class="col-lg-6 col-xs-6 graph-tab card">
+      <svg id = "simulation-viz" width="600" height="600"></svg>
+    </div>
+    
+     <div class="col-lg-1 col-xs-1 "></div>
+    
+    <div class="col-lg-4 col-xs-4 container-fluid ">
+    <div class="card">
+     <table class="table">
+    <thead>
+      <tr>
+        <th> Time </th>
+        <th> Vulnerability </th>
+        <th> Compomised </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in simulationData track by item.id">
+        <td> {{item.tick  }} </td>
+        <td>{{item.vulnerability | number: 2 }} % </td>
+        <td>{{item.compromised}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+    </div>  
+    </div>
 
 </div>

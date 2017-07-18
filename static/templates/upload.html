@@ -1,8 +1,25 @@
-<div ng-controller="SimulationController">
+<div ng-controller="UploadController">
    <div class="row">
-    <div class="col-lg-2 col-xs-2 action-tab">
+    <div class="col-lg-4 col-xs-4 action-tab">
+     <div class="card">
+      <div class="container-fluid">
+       <input type="file" 
+         name = "file"
+         ng-model = "jsonFile"
+         class="btn btn-primary btn-block top-margin"
+         ngf-select
+          accept=".json"  ngf-max-size="1MB">
+      
         
-        <button type="button" class="btn btn-primary btn-block"> Upload </button>
+        
+        <button type="button" 
+                ng-click="uploadFiles(jsonFile)"
+                class="btn btn-primary btn-block bottom-margin"> Submit </button>
+        <span ng-show="jsonFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>        
+        </div>
+        
+        </div>
 </div>
  
  

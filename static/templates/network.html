@@ -3,25 +3,126 @@
 
    <div class="row">
     <div class="col-lg-2 col-xs-2 action-tab">
+       
+       
+       
+       <div class="container-fluid card">
+  
+  
+  
+
+       
+      
+                
+        <button type="button" 
+                ng-click="triggerCreate()"
+                class="btn btn-primary btn-block top-margin"> Create graph</button>
+        <button type="button"  
+                ng-click="triggerAddMachinePre()"
+                class="btn btn-primary btn-block"> Add machine</button>
+        <button type="button" 
+                ng-click="triggerAddUserPre()"
+                class="btn btn-primary btn-block"> Add user</button>        
+        <button type="button" 
+                ng-click="triggerLinkUsersPre()"
+                class="btn btn-primary btn-block"> Link users</button>
+        <button type="button" 
+                ng-click="triggerLinkMachinesPre()"
+                class="btn btn-primary btn-block"> Link machines</button>       
+        <button type="button" 
+                ng-click="triggerSaveGraph()"
+                class="btn btn-primary btn-block"> Save graph</button>               
+    <form class="top-margin bottom-margin">
+    <label class="radio-inline">
+      <input type="radio" ng-model="nodeOptions" value="user" ng-change="triggerOptionsChange()"><small> user</small>
+    </label>
+    <label class="radio-inline">
+      <input type="radio" ng-model="nodeOptions" ng-change="triggerOptionsChange()" value="machine"><small> machine</small>
+    </label>
+    <label class="radio-inline">
+      <input type="radio" ng-model="nodeOptions" ng-change="triggerOptionsChange()" value="both"><small> both</small>
+    </label>
+  </form>      
+    </div>
+          <h4 ng-show="isLinkDiv"> {{linkHeader}} </h4>   
+          <div class= "container-fluid card" ng-show="isLinkDiv"> 
+          
+          <div class="form-group">
+          <label for="usr">Source:</label>
+          <select           
+            class="form-control"    
+            ng-model="link.source"           
+            ng-change="triggerLinkChanged()"          
+            ng-options='p for p in networkGraph.customIDs'>
+          </select>
+          </div>
+          <div class="form-group">
+          <label for="usr">Target:</label>
+          <select           
+            class="form-control"    
+            ng-model="link.target" 
+            ng-change="triggerLinkChanged()"          
+            ng-options='p for p in networkGraph.customIDs'>
+          </select>
+          </div>
+          
+          <div class="form-group" ng-show="isMachine">
+            <label for="usr">Protocol:</label>
+            <input type="text" class="form-control" ng-model="link.properties.protocol">
+          </div>
+          <div class="form-group" ng-show="isMachine">
+            <label for="usr">Port:</label>
+            <input type="text" class="form-control"  ng-model="link.properties.port">
+          </div> 
+          <div class="form-group" ng-show="isUser">
+            <label for="usr">Leakage:</label>
+            <input type="text" class="form-control" ng-model="link.properties.leakage">
+          </div>
+          
+          <button type="button" 
+                ng-click="triggerSaveLink()"
+                class="btn btn-success btn-block bottom-margin"> Save</button>              
+            
+          </div>
+          
+          <h4 ng-show="isNodeDiv"> {{nodeHeader}} </h4>   
+         <div class= "container-fluid card" ng-show="isNodeDiv">
+         
+         <div class="form-group">
+          <label for="usr">ID:</label>
+          <input type="text" class="form-control" ng-model="node.id">
+        </div>
+        <div class="form-group">
+          <label for="usr">Label:</label>
+          <input type="text" class="form-control"  ng-model="node.label">
+        </div> 
         
-        <button type="button" class="btn btn-primary btn-block"> Create Graph</button>
-        <div class="checkbox">
-  <label><input type="checkbox" value=""> User </label>
-</div>
-<div class="checkbox">
-  <label><input type="checkbox" value=""> Both</label>
-</div>
-<div class="checkbox disabled">
-  <label><input type="checkbox" value="" disabled> Machine</label>
-</div>
+        <div class="form-group">
+          <label for="usr">vulnerability:</label>
+          <input type="text" class="form-control"  ng-model="node.properties.vulnerability">
+        </div>
+        <div class="form-group" ng-show="isMachine">
+          <label for="usr">CVE:</label>
+          <input type="text" class="form-control"  ng-model="node.properties.cve">
+        </div>
+        <div class="form-group" ng-show="isUser">
+          <label for="usr">hasacc:</label>
+          <input type="text" class="form-control"  ng-model="node.properties.hasacc">
+        </div> 
+        <button type="button" 
+                ng-click="triggerSaveNode()"
+                class="btn btn-success btn-block bottom-margin"> Save</button>              
+                
+         </div>        
+                              
+        
 
 </div>
  
- 
 
-<div>
+<div >
     <div class="col-lg-10 col-xs-10 graph-tab">
-      <div id="network-viz"></div>
+      <div id="network-viz" class="card"></div>
     </div>
     
 </div>   
