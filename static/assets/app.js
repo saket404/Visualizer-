@@ -477,7 +477,7 @@ $scope.drawGraph = function(){
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .text("Compromised");
+        .text("System Vulnerability");
 
     g.append("path")
         .datum(data)
