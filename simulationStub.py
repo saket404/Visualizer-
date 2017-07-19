@@ -76,19 +76,3 @@ def start(maxTick):
   time.sleep(3)
   with open('./static/state.json', 'w') as fp:
       json.dump({"state":"done"}, fp)
-
-    
-
-    
-
-
-
-
-
-
-    
-
-
-
-
-

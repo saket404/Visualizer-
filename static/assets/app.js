@@ -1,3 +1,4 @@
+
 var app = angular.module("dashboardApp", ["ngRoute", "ngFileUpload"]);
 app.config(["$routeProvider", function($routeProvider) {
     $routeProvider
@@ -477,7 +478,7 @@ $scope.drawGraph = function(){
         .attr("y", 6)
         .attr("dy", "0.71em")
         .attr("text-anchor", "end")
-        .text("System Vulnerability");
+        .text("Average Vulnerability");
 
     g.append("path")
         .datum(data)
@@ -558,8 +559,6 @@ angular.module('dashboardApp')
 $scope.uploadFiles = function(file) {
   
   $scope.errorMsg = ""
-
-  
   if (file.name.split(".")[1] != "json"){
     $scope.errorMsg = "Error: Wrong file. Please select a .json file."
     return
