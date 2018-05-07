@@ -1,5 +1,5 @@
 # Visualizer-
-A simulator Visualizer implemented as a web interface
+A simulator Visualizer implemented as a web interface. Internship 2017 (National University of Singapore)
 
 
 Missing Features 7/7/17:
